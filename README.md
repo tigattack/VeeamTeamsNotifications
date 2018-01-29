@@ -1,4 +1,4 @@
-# Veeam Backup and Restore Notification for Slack
+# Veeam Backup and Restore Notifications for Slack
 
 Sends notifications from Veeam Backup & Restore to Slack
 
