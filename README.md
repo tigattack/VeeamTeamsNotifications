@@ -64,7 +64,7 @@ Below is an example configuration file.
 	"webhook": "https://...",
 	"channel": "#veeam",
 	"service_name": "Veeam B&R",
-	"icon_url": "https://raw.githubusercontent.com/tigattack/VeeamSlackNotifications/master/asset/img/icon/veeam_slack.png",
+	"icon_url": "https://raw.githubusercontent.com/tigattack/VeeamSlackNotifications/master/asset/img/icon/VeeamB%26R.png",
 	"debug_log": false
 }
 ```
