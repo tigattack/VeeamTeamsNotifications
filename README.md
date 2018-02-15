@@ -31,7 +31,7 @@ Or without git:
 Download release, there may be later releases take a look and replace the version number with newer release numbers.
 Unzip the archive and make sure the folder is called: `VeeamSlackNotifications`
 ```powershell
-Invoke-WebRequest -Uri https://github.com/tigattack/VeeamSlackNotifications/archive/v1.0.zip -OutFile C:\VeeamScripts\VeeamSlackNotifications-v1.0.zip
+Invoke-WebRequest -Uri https://github.com/tigattack/VeeamSlackNotifications/archive/2.1.zip -OutFile C:\VeeamScripts\VeeamSlackNotifications-v1.0.zip
 ```
 
 Configure the project:
