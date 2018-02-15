@@ -2,12 +2,7 @@
 
 Sends notifications from Veeam Backup & Restore to Slack
 
-![Chat Example](asset/img/screens/sh-2.png)
-
-
-If you use Mattermost check this out:
-
-* [Veeam Mattermost Notifications](https://github.com/TheSageColleges/MattermostVeeamNotifications)
+![Chat Example](https://raw.githubusercontent.com/tigattack/VeeamSlackNotifications/1d6bd61e93a11ce22e1d228d6f30deadc7c91489/asset/img/screens/sh-2.png)
 
 ---
 
@@ -66,9 +61,9 @@ Below is an example configuration file.
 
 ```shell
 {
-	"webhook": "https://hooks.slack.com/services/....",
+	"webhook": "https://...",
 	"channel": "#veeam",
-	"service_name": "VeeamBot",
+	"service_name": "Veeam B&R",
 	"icon_url": "https://raw.githubusercontent.com/tigattack/VeeamSlackNotifications/master/asset/img/icon/veeam_slack.png",
 	"debug_log": false
 }
