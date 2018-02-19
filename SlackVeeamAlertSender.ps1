@@ -33,8 +33,8 @@ while ($session.IsCompleted -eq $false) {
 $Status = $session.Result
 $JobName = $session.Name.ToString().Trim()
 $JobType = $session.JobTypeString.Trim()
-[Float]$JobSize = $session.BackupStats.BackupSize
-[Float]$TransfSize = $session.BackupStats.DataSize
+[Float]$JobSize = $session.BackupStats.DataSize
+[Float]$TransfSize = $session.BackupStats.BackupSize
 
 # Report job/data size in B, KB, MB, GB, or TB depending on completed size.
 ## Job size
