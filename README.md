@@ -23,7 +23,7 @@ Then clone this repository:
 cd C:\VeeamScripts
 git clone https://github.com/tigattack/VeeamSlackNotifications.git
 cd VeeamSlackNotifications
-git checkout v1-stable
+git checkout master
 ```
 
 Or without git:
