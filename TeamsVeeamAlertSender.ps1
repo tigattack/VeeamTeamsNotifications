@@ -116,19 +116,19 @@ switch ($Status) {
 $details  = "Backup Size - " + [String]$JobSizeRound + " / Transferred Data - " + [String]$TransfSizeRound + " / Dedup Ratio - " + [String]$session.BackupStats.DedupRatio + " / Compress Ratio - " + [String]$session.BackupStats.CompressRatio + " / Duration - " + $Duration
 
 # Build the payload
-$slackJSON = @{}
-$slackJSON.channel = $config.channel
-$slackJSON.username = $config.service_name
-$slackJSON.icon_url = $config.icon_url
-$slackJSON.text = $emoji + '**Job:** ' + $JobName + "`n" + $emoji + '**Status:** ' + $Status + "`n" + $emoji + '**Details:** '  + $details
+$teamsJSON = @{}
+$teamsJSON.channel = $config.channel
+$teamsJSON.username = $config.service_name
+$teamsJSON.icon_url = $config.icon_url
+$teamsJSON.text = $emoji + '**Job:** ' + $JobName + "`n" + $emoji + '**Status:** ' + $Status + "`n" + $emoji + '**Details:** '  + $details
 
 # Build the web request
 $webReq=@{
     Uri = $config.webhook
     ContentType = 'application/json'
     Method = 'Post'
-    body = ConvertTo-Json $slackJSON
+    body = ConvertTo-Json $teamsJSON
 }
 
-# Send it to Slack
+# Send it to Teams
 $request = Invoke-WebRequest -UseBasicParsing @webReq
