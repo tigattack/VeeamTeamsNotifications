@@ -1,12 +1,10 @@
-####################
-# Import Functions #
-####################
+# Import functions
 Import-Module "$PSScriptRoot\Helpers"
 
 # Get the config from our config file
 $config = (Get-Content "$PSScriptRoot\config\vsn.json") -Join "`n" | ConvertFrom-Json
 
-# Should we log?
+# Logging
 if($config.debug_log) {
 	Start-Logging "$PSScriptRoot\log\debug.log"
 }
@@ -18,13 +16,17 @@ Add-PSSnapin VeeamPSSnapin
 $parentpid = (Get-WmiObject Win32_Process -Filter "processid='$pid'").parentprocessid.ToString()
 $parentcmd = (Get-WmiObject Win32_Process -Filter "processid='$parentpid'").CommandLine
 $job = Get-VBRJob | ?{$parentcmd -like "*"+$_.Id.ToString()+"*"}
+
 # Get the Veeam session
 $session = Get-VBRBackupSession | ?{($_.OrigJobName -eq $job.Name) -and ($parentcmd -like "*"+$_.Id.ToString()+"*")}
+
 # Store the ID and Job Name
 $Id = '"' + $session.Id.ToString().ToString().Trim() + '"'
 $JobName = '"' + $session.OrigJobName.ToString().Trim() + '"'
+
 # Build argument string
 $powershellArguments = "-file $PSScriptRoot\TeamsVeeamAlertSender.ps1", "-JobName $JobName", "-Id $Id"
-# Start a new new script in a new process with some of the information gathered her
+
+# Start a new new script in a new process with some of the information gathered here
 # Doing this allows Veeam to finish the current session so information on the job's status can be read
 Start-Process -FilePath "powershell" -Verb runAs -ArgumentList $powershellArguments -WindowStyle hidden
