@@ -60,10 +60,7 @@ Below is an example configuration file.
 
 ```shell
 {
-	"webhook": "https://...",
-	"channel": "#veeam",
-	"service_name": "Veeam B&R",
-	"icon_url": "https://raw.githubusercontent.com/tigattack/VeeamTeamsNotifications/master/asset/img/icon/VeeamB%26R.png",
+	"webhook": "ttps://outlook.office.com/webhook/...",
 	"debug_log": false
 }
 ```
