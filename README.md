@@ -22,7 +22,6 @@ Then clone this repository:
 cd C:\VeeamScripts
 git clone https://github.com/tigattack/VeeamTeamsNotifications.git
 cd VeeamTeamsNotifications
-git checkout master
 ```
 
 Or without git:
@@ -30,15 +29,16 @@ Or without git:
 Download release, there may be later releases take a look and replace the version number with newer release numbers.
 Unzip the archive and make sure the folder is called: `VeeamTeamsNotifications`
 ```powershell
-Invoke-WebRequest -Uri https://github.com/tigattack/VeeamTeamsNotifications/archive/2.1.zip -OutFile C:\VeeamScripts\VeeamTeamsNotifications-v1.0.zip
+Invoke-WebRequest -Uri https://github.com/tigattack/VeeamTeamsNotifications/archive/v1.1.zip -OutFile C:\VeeamScripts\VeeamTeamsNotifications-v1.1.zip
 ```
 
 Configure the project:
-
+Make a new config file
 ```shell
-# Make a new config file
 cp C:\VeeamScripts\VeeamTeamsNotifications\config\vsn.example.json C:\VeeamScripts\VeeamTeamsNotifications\config\vsn.json
-# Edit your config file. You must replace the webhook field with your own Teams url.
+```
+ dit your config file. You must replace the webhook field with your own Teams url.
+ ```shell
 notepad.exe C:\VeeamScripts\VeeamTeamsNotifications\config\vsn.json
 ```
 
@@ -53,14 +53,3 @@ Powershell.exe -File C:\VeeamScripts\VeeamTeamsNotifications\TeamsNotificationBo
 ![screen](asset/img/screens/sh-1.png)
 
 ---
-
-## Example Configuration:
-
-Below is an example configuration file.
-
-```shell
-{
-	"webhook": "ttps://outlook.office.com/webhook/...",
-	"debug_log": false
-}
-```
