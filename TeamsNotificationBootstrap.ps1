@@ -24,7 +24,7 @@ $session = Get-VBRBackupSession | ?{($_.OrigJobName -eq $job.Name) -and ($parent
 $Id = '"' + $session.Id.ToString().ToString().Trim() + '"'
 $JobName = '"' + $session.OrigJobName.ToString().Trim() + '"'
 # Build argument string
-$powershellArguments = "-file $PSScriptRoot\SlackVeeamAlertSender.ps1", "-JobName $JobName", "-Id $Id"
+$powershellArguments = "-file $PSScriptRoot\TeamsVeeamAlertSender.ps1", "-JobName $JobName", "-Id $Id"
 # Start a new new script in a new process with some of the information gathered her
 # Doing this allows Veeam to finish the current session so information on the job's status can be read
 Start-Process -FilePath "powershell" -Verb runAs -ArgumentList $powershellArguments -WindowStyle hidden
