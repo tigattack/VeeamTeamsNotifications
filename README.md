@@ -6,7 +6,7 @@ Sends notifications from Veeam Backup & Restore to Teams
 
 [Larger screenshot.](https://raw.githubusercontent.com/tigattack/VeeamTeamsNotifications/master/asset/img/screens/sh-4.png)
 ---
-[Slack/Discord version.](https://github.com/tigattack/VeeamSlackNotifications)
+[Slack/Discord version of this.](https://github.com/tigattack/VeeamSlackNotifications)
 ---
 ## Setup
 
