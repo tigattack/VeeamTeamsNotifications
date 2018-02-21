@@ -5,8 +5,9 @@ Sends notifications from Veeam Backup & Restore to Slack
 ![Chat Example](https://raw.githubusercontent.com/tigattack/VeeamSlackNotifications/1d6bd61e93a11ce22e1d228d6f30deadc7c91489/asset/img/screens/sh-2.png)
 
 ---
+## [Discord Setup](https://blog.tiga.tech/veeam-b-r-notifications-in-discord/)
 
-## Setup
+## Slack Setup
 
 Make a scripts directory: `C:\VeeamScripts`
 
