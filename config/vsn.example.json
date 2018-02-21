@@ -1,4 +1,8 @@
 {
-	"webhook": "ttps://outlook.office.com/webhook/...",
-	"debug_log": false
+    "webhook": "https://outlook.office.com/webhook/...",
+    "VeeamBRIcon": "https://raw.githubusercontent.com/tigattack/VeeamTeamsNotifications/master/asset/img/icon/VeeamB%26R.png",
+    "JobSuccessImage": "https://raw.githubusercontent.com/tigattack/VeeamTeamsNotifications/master/asset/img/status/success-box.png",
+    "JobWarningImage": "https://raw.githubusercontent.com/tigattack/VeeamTeamsNotifications/master/asset/img/status/warning-box.png",
+    "JobFailureImage": "https://raw.githubusercontent.com/tigattack/VeeamTeamsNotifications/master/asset/img/status/failure-box.png",
+    "Debug_Log": false
 }
