@@ -34,12 +34,19 @@ Unzip the archive and make sure the folder is called: `VeeamTeamsNotifications`
 Invoke-WebRequest -Uri https://github.com/tigattack/VeeamTeamsNotifications/archive/v1.1.zip -OutFile C:\VeeamScripts\VeeamTeamsNotifications-v1.1.zip
 ```
 
-Configure the project:
+#### Extract and clean up
+```shell
+Expand-Archive C:\VeeamScripts\VeeamTeamsNotifications-v1.1.zip -DestinationPath C:\VeeamScripts
+Ren C:\VeeamScripts\VeeamTeamsNotifications-1.1 C:\VeeamScripts\VeeamTeamsNotifications
+rm C:\VeeamScripts\VeeamTeamsNotifications-v1.1.zip
+```
+
+#### Configure the project:
 Make a new config file
 ```shell
 cp C:\VeeamScripts\VeeamTeamsNotifications\config\vsn.example.json C:\VeeamScripts\VeeamTeamsNotifications\config\vsn.json
 ```
- dit your config file. You must replace the webhook field with your own Teams url.
+ Edit your config file. You must replace the webhook field with your own Teams url.
  ```shell
 notepad.exe C:\VeeamScripts\VeeamTeamsNotifications\config\vsn.json
 ```
