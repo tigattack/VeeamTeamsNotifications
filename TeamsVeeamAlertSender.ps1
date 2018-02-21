@@ -11,8 +11,8 @@ Import-Module "$PSScriptRoot\Helpers"
 # Get the config from our config file
 $config = (Get-Content "$PSScriptRoot\config\vsn.json") -Join "`n" | ConvertFrom-Json
 
-# Should we log?
-if($config.debug_log) {
+# Logging
+if($config.Debug_Log) {
 	Start-Logging "$PSScriptRoot\log\debug.log"
 }
 
@@ -103,29 +103,62 @@ $Duration = $session.Info.EndTime - $session.Info.CreationTime
 $TimeSpan = $Duration
 $Duration = '{0:00}h {1:00}m {2:00}s' -f $TimeSpan.Hours, $TimeSpan.Minutes, $TimeSpan.Seconds
 
-# Switch on the session status
-switch ($Status) {
-    None {$emoji = ''}
-    Warning {$emoji = ':warning: '}
-    Success {$emoji = ':white_check_mark:  '}
-    Failed {$emoji = ':exclamation: '}
-    Default {$emoji = ''}
-#}
-
-# Build the details string
-$details  = "Backup Size - " + [String]$JobSizeRound + " / Transferred Data - " + [String]$TransfSizeRound + " / Dedup Ratio - " + [String]$session.BackupStats.DedupRatio + " / Compress Ratio - " + [String]$session.BackupStats.CompressRatio + " / Duration - " + $Duration
-
-# Build the payload
-$teamsJSON = @{}
-$teamsJSON.text = $emoji + '**Job:** ' + $JobName + "`n" + '**Status:** ' + $Status + "`n" + '**Details:** '  + $details
-
-# Build the web request
-$webReq=@{
-    Uri = $config.webhook
-    ContentType = 'application/json'
-    Method = 'Post'
-    body = ConvertTo-Json $teamsJSON
+# Switch for card theme colour
+Switch ($Status) {
+    None {$Colour = ''}
+    Failed {$Colour = 'ff0000'}
+    Warning {$Colour = 'ffe100'}
+    Success {$Colour = '00ff00'}
+    Default {$Colour = ''}
+}
+# Switch for status image
+Switch ($Status) {
+    None {$StatusImg = $config.VeeamBRIcon}
+    Failed {$StatusImg = $config.JobFailureImage}
+    Warning {$StatusImg = $config.JobWarningImage}
+    Success {$StatusImg = $config.JobSuccessImage}
+    Default {$StatusImg = $config.VeeamBRIcon}
 }
 
-# Send it to Teams
-$request = Invoke-WebRequest -UseBasicParsing @webReq
+# Build the payload
+$Card = ConvertTo-Json -Depth 4 @{
+    Summary = 'Veeam B&R Report - ' + ($JobName)
+    themeColor = $Colour
+    sections = @(
+        @{
+            title = '**Veeam Backup & Replication**'
+            activityImage = $StatusImg
+            activityTitle = $JobName
+            activitySubtitle = (Get-Date -Format U)
+            facts = @(
+                @{
+                    name = "Job status:"
+                    value = $Status
+                },
+                				@{
+					name = "Backup size:"
+					value = $JobSizeRound
+				},
+				@{
+					name = "Transferred data:"
+					value = $TransfSizeRound
+				},
+				@{
+					name = "Dedupe ratio:"
+					value = $session.BackupStats.DedupRatio
+                },
+				@{
+					name = "Compress ratio:"
+					value =	$session.BackupStats.CompressRatio
+                },
+				@{
+					name = "Duration:"
+					value = $Duration
+				}
+            )
+        }
+    )
+}
+
+# Send report to Teams
+Invoke-RestMethod -Method post -ContentType 'Application/Json' -Body $Card -Uri $config.webhook
