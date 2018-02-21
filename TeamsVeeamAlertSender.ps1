@@ -105,22 +105,19 @@ $Duration = '{0:00}h {1:00}m {2:00}s' -f $TimeSpan.Hours, $TimeSpan.Minutes, $Ti
 
 # Switch on the session status
 switch ($Status) {
-    None {$emoji = ':thought _ balloon: '}
+    None {$emoji = ''}
     Warning {$emoji = ':warning: '}
     Success {$emoji = ':white_check_mark:  '}
-    Failed {$emoji = ':x: '}
+    Failed {$emoji = ':exclamation: '}
     Default {$emoji = ''}
-}
+#}
 
 # Build the details string
 $details  = "Backup Size - " + [String]$JobSizeRound + " / Transferred Data - " + [String]$TransfSizeRound + " / Dedup Ratio - " + [String]$session.BackupStats.DedupRatio + " / Compress Ratio - " + [String]$session.BackupStats.CompressRatio + " / Duration - " + $Duration
 
 # Build the payload
 $teamsJSON = @{}
-$teamsJSON.channel = $config.channel
-$teamsJSON.username = $config.service_name
-$teamsJSON.icon_url = $config.icon_url
-$teamsJSON.text = $emoji + '**Job:** ' + $JobName + "`n" + $emoji + '**Status:** ' + $Status + "`n" + $emoji + '**Details:** '  + $details
+$teamsJSON.text = $emoji + '**Job:** ' + $JobName + "`n" + '**Status:** ' + $Status + "`n" + '**Details:** '  + $details
 
 # Build the web request
 $webReq=@{
