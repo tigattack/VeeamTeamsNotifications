@@ -2,13 +2,14 @@
 
 Sends notifications from Veeam Backup & Restore to Teams
 
-![Chat Example](https://raw.githubusercontent.com/tigattack/VeeamTeamsNotifications/master/asset/img/screens/sh-2.png)
+![Chat Example](https://raw.githubusercontent.com/tigattack/VeeamTeamsNotifications/master/asset/img/screens/sh-2.png)    
+[Better example.](https://raw.githubusercontent.com/tigattack/VeeamTeamsNotifications/master/asset/img/screens/sh-4.png)
 
-[Larger screenshot.](https://raw.githubusercontent.com/tigattack/VeeamTeamsNotifications/master/asset/img/screens/sh-4.png)
 ---
-[Slack/Discord version of this.](https://github.com/tigattack/VeeamSlackNotifications)
+## [Slack fork.](https://github.com/tigattack/VeeamSlackNotifications)
+## [MS Teams fork.](https://github.com/tigattack/VeeamTeamsNotifications)
 ---
-## Setup
+## Teams setup
 
 Make a scripts directory: `C:\VeeamScripts`
 
