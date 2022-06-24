@@ -1,5 +1,11 @@
 # Veeam Backup and Restore Notifications for Teams
 
+## VeeamTeamsNotifications has been replaced by [VeeamNotify](https://github.com/tigattack/VeeamNotify).
+
+This repository is now archived.
+
+---
+
 Sends notifications from Veeam Backup & Restore to Teams
 
 ![Chat Example](https://raw.githubusercontent.com/tigattack/VeeamTeamsNotifications/master/asset/img/screens/sh-2.png)    
